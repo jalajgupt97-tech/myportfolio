@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jalaj Gupta Portfolio</title>
+<meta name="description" content="Jalaj Gupta — Senior Java & Spring Boot engineer building secure, scalable microservices, with AI-assisted development using GitHub Copilot and Claude.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800;900&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #f4f5f8;
+    --card: #ffffff;
+    --card-2: #eceef3;
+    --ink: #0c0f17;
+    --ink-2: #474d5c;
+    --ink-3: #7c8293;
+    --line: #e0e3ea;
+    --accent: #2340ff;
+    --accent-2: #ff7a2f;
+    --accent-soft: #e6e9ff;
+    --on-accent: #ffffff;
+    --inv-bg: #0c0f17;
+    --inv-card: #161a25;
+    --inv-line: #262b3a;
+    --inv-ink: #f2f4fa;
+    --inv-ink-2: #a3a9ba;
+    --shadow: 0 1px 2px rgba(12,15,23,.04), 0 8px 24px -12px rgba(12,15,23,.12);
+    --sans: "Schibsted Grotesk", "Segoe UI", system-ui, sans-serif;
+    --mono: "Geist Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
+    --r: 22px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #0a0c12;
+      --card: #12151e;
+      --card-2: #1a1e2a;
+      --ink: #eef0f6;
+      --ink-2: #aab0c0;
+      --ink-3: #737a8d;
+      --line: #232838;
+      --accent: #7d8cff;
+      --accent-2: #ff9a5c;
+      --accent-soft: #1d2250;
+      --on-accent: #0a0c12;
+      --inv-bg: #151a2a;
+      --inv-card: #1c2234;
+      --inv-line: #2c3350;
+      --shadow: 0 1px 0 rgba(255,255,255,.03) inset;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #0a0c12;
+    --card: #12151e;
+    --card-2: #1a1e2a;
+    --ink: #eef0f6;
+    --ink-2: #aab0c0;
+    --ink-3: #737a8d;
+    --line: #232838;
+    --accent: #7d8cff;
+    --accent-2: #ff9a5c;
+    --accent-soft: #1d2250;
+    --on-accent: #0a0c12;
+    --inv-bg: #151a2a;
+    --inv-card: #1c2234;
+    --inv-line: #2c3350;
+    --shadow: 0 1px 0 rgba(255,255,255,.03) inset;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 400 16px/1.6 var(--sans); -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+  p { margin: 0; }
+  h1, h2, h3 { margin: 0; line-height: 1.05; text-wrap: balance; letter-spacing: -0.03em; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 8px; }
+  .wrap { max-width: 1180px; margin-inline: auto; padding-inline: clamp(16px, 4vw, 32px); }
+  .mono { font-family: var(--mono); }
+  .kicker { font: 500 12px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
+
+  /* ---------- floating nav ---------- */
+  .navbar { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); z-index: 20; margin-top: 12px; }
+  .navbar .wrap { display: flex; justify-content: center; }
+  .pill-nav {
+    display: flex; align-items: center; gap: 2px; padding: 6px; max-width: 100%;
+    background: color-mix(in srgb, var(--card) 80%, transparent);
+    backdrop-filter: blur(14px) saturate(1.5); -webkit-backdrop-filter: blur(14px) saturate(1.5);
+    border: 1px solid var(--line); border-radius: 999px; box-shadow: var(--shadow);
+    overflow-x: auto; scrollbar-width: none;
+  }
+  .pill-nav::-webkit-scrollbar { display: none; }
+  .pill-nav a { font: 500 14px/1 var(--sans); text-decoration: none; color: var(--ink-2); padding: 10px 14px; border-radius: 999px; white-space: nowrap; transition: background .15s, color .15s; }
+  .pill-nav a:hover { color: var(--ink); background: var(--card-2); }
+  .pill-nav a.logo { font-weight: 800; color: var(--ink); letter-spacing: -0.02em; }
+  .pill-nav a.go { background: var(--ink); color: var(--bg); }
+  .pill-nav a.go:hover { background: var(--accent); color: var(--on-accent); }
+
+  /* ---------- bento hero ---------- */
+  .hero { padding-block: clamp(28px, 5vw, 56px) 0; }
+  .bento { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px; }
+  .tile { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: clamp(20px, 2.4vw, 28px); box-shadow: var(--shadow); min-width: 0; position: relative; overflow: hidden; }
+  .t-intro { grid-column: span 4; grid-row: span 2; display: flex; flex-direction: column; justify-content: space-between; gap: 40px; min-height: 420px; }
+  .t-years { grid-column: span 2; }
+  .t-ai { grid-column: span 2; background: var(--accent); color: var(--on-accent); border-color: transparent; text-decoration: none; display: flex; flex-direction: column; justify-content: space-between; gap: 18px; transition: transform .2s ease; }
+  .t-ai:hover { transform: translateY(-3px); }
+  .t-stack { grid-column: span 4; padding-inline: 0; }
+  .t-domains { grid-column: span 2; }
+
+  .status { display: inline-flex; align-items: center; gap: 8px; font: 500 13px/1 var(--sans); color: var(--ink-2); background: var(--card-2); padding: 8px 12px; border-radius: 999px; width: fit-content; }
+  .status i { width: 8px; height: 8px; border-radius: 50%; background: #1fbf6a; box-shadow: 0 0 0 3px color-mix(in srgb, #1fbf6a 25%, transparent); }
+  .t-intro h1 { font-size: clamp(48px, 7.6vw, 104px); font-weight: 900; letter-spacing: -0.045em; line-height: .92; }
+  .t-intro h1 em { font-style: normal; color: var(--accent); }
+  .t-intro .lede { font-size: clamp(17px, 1.7vw, 20px); color: var(--ink-2); max-width: 30em; margin-top: 18px; line-height: 1.5; }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; font: 600 15px/1 var(--sans); text-decoration: none; padding: 14px 20px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--ink); transition: transform .15s, background .15s, border-color .15s; }
+  .btn:hover { transform: translateY(-1px); border-color: var(--ink-3); }
+  .btn.solid { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .btn.solid:hover { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+  .btn svg { width: 16px; height: 16px; }
+
+  .big { font-size: clamp(64px, 8vw, 96px); font-weight: 900; letter-spacing: -0.05em; line-height: .9; font-variant-numeric: tabular-nums; }
+  .big sup { font-size: .45em; color: var(--accent); vertical-align: top; position: relative; top: .15em; margin-left: 2px; }
+  .tile-foot { color: var(--ink-2); margin-top: 12px; font-size: 15px; }
+  .years-bar { display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; margin-top: 18px; }
+  .years-bar span { height: 22px; border-radius: 5px; background: var(--accent-soft); }
+  .years-bar span.on { background: var(--accent); }
+  .years-legend { display: flex; justify-content: space-between; font: 400 11.5px/1 var(--mono); color: var(--ink-3); margin-top: 8px; }
+
+  .t-ai .kicker { color: color-mix(in srgb, var(--on-accent) 75%, transparent); }
+  .t-ai h2 { font-size: clamp(24px, 2.4vw, 30px); font-weight: 800; }
+  .t-ai .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .t-ai .chips span { font: 500 12.5px/1 var(--mono); padding: 7px 10px; border-radius: 999px; background: color-mix(in srgb, var(--on-accent) 16%, transparent); }
+  .t-ai .arrow { position: absolute; top: 22px; right: 22px; width: 36px; height: 36px; border-radius: 50%; background: color-mix(in srgb, var(--on-accent) 18%, transparent); display: grid; place-items: center; }
+  .t-ai .arrow svg { width: 16px; height: 16px; }
+
+  .t-stack .kicker { padding-inline: clamp(20px, 2.4vw, 28px); display: block; }
+  .marquee { margin-top: 18px; display: grid; gap: 10px; mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+  .track { display: flex; gap: 10px; width: max-content; animation: slide 38s linear infinite; }
+  .track.rev { animation-direction: reverse; animation-duration: 44s; }
+  .track span { font: 500 15px/1 var(--sans); padding: 12px 16px; border-radius: 12px; background: var(--card-2); color: var(--ink); white-space: nowrap; }
+  .track span b { font-weight: 500; color: var(--ink-3); font-family: var(--mono); font-size: 12px; margin-left: 6px; }
+  @keyframes slide { to { transform: translateX(-50%); } }
+
+  .domain-list { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 8px; }
+  .domain-list li { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: 20px; font-weight: 700; letter-spacing: -0.02em; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+  .domain-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+  .domain-list small { font: 400 12px/1 var(--mono); color: var(--ink-3); letter-spacing: 0; }
+
+  /* ---------- sections ---------- */
+  section.sec { padding-block: clamp(72px, 10vw, 128px) 0; }
+  .sec-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; margin-bottom: 36px; }
+  .sec-head h2 { font-size: clamp(36px, 5.4vw, 64px); font-weight: 800; }
+  .sec-head p { color: var(--ink-2); max-width: 30em; }
+
+  /* experience */
+  .xp { display: grid; border-top: 1px solid var(--line); }
+  .xp-row { display: grid; grid-template-columns: 180px minmax(0, 1.2fr) minmax(0, 1fr); gap: 24px; align-items: baseline; padding-block: 28px; border-bottom: 1px solid var(--line); transition: background .2s; }
+  .xp-row:hover { background: linear-gradient(90deg, transparent, var(--card) 20%, var(--card) 80%, transparent); }
+  .xp-when { font: 400 13.5px/1.5 var(--mono); color: var(--ink-3); }
+  .xp-when .now { display: inline-flex; align-items: center; gap: 6px; color: var(--accent); margin-top: 4px; }
+  .xp-when .now::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .xp-co { font-size: clamp(26px, 3vw, 36px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; }
+  .xp-role { color: var(--ink-2); margin-top: 6px; }
+  .xp-role span { color: var(--ink-3); }
+  .xp-tags { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
+  .xp-tags span { font: 400 12.5px/1 var(--mono); padding: 7px 10px; border: 1px solid var(--line); border-radius: 999px; color: var(--ink-2); background: var(--card); }
+
+  /* AI section */
+  .ai { background: var(--inv-bg); color: var(--inv-ink); border-radius: 32px; padding: clamp(28px, 5vw, 64px); position: relative; overflow: hidden; }
+  .ai::before {
+    content: ""; position: absolute; width: 520px; height: 520px; right: -160px; top: -220px; border-radius: 50%;
+    background: radial-gradient(circle, color-mix(in srgb, var(--accent-2) 55%, transparent), transparent 65%);
+    opacity: .35; pointer-events: none;
+  }
+  .ai .sec-head { position: relative; }
+  .ai .sec-head p { color: var(--inv-ink-2); }
+  .ai .kicker { color: var(--accent-2); }
+  .ai h2 em { font-style: normal; color: var(--accent-2); }
+  .tools { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; position: relative; }
+  .tool { background: var(--inv-card); border: 1px solid var(--inv-line); border-radius: var(--r); padding: clamp(22px, 2.6vw, 30px); display: flex; flex-direction: column; gap: 16px; }
+  .tool-top { display: flex; align-items: center; gap: 14px; }
+  .mark { width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; font: 800 18px/1 var(--sans); letter-spacing: -0.04em; flex: none; }
+  .mark.c1 { background: #f2f4fa; color: #0c0f17; }
+  .mark.c2 { background: var(--accent-2); color: #1b0e05; }
+  .tool h3 { font-size: 24px; font-weight: 800; }
+  .tool .sub { color: var(--inv-ink-2); font-size: 14px; margin-top: 2px; }
+  .uses { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .uses li { background: color-mix(in srgb, var(--inv-ink) 6%, transparent); border-radius: 12px; padding: 12px 14px; font-size: 15px; line-height: 1.35; }
+  .uses li b { display: block; font-weight: 700; }
+  .uses li span { color: var(--inv-ink-2); font-size: 13.5px; }
+
+  .loop { margin-top: 14px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; position: relative; }
+  .step { border-top: 1px solid var(--inv-line); padding-top: 16px; }
+  .step .n { font: 500 12px/1 var(--mono); color: var(--accent-2); }
+  .step b { display: block; font-size: 18px; margin-top: 10px; letter-spacing: -0.01em; }
+  .step p { color: var(--inv-ink-2); font-size: 14.5px; margin-top: 4px; }
+  .loop-title { margin-top: clamp(36px, 5vw, 56px); position: relative; }
+
+  /* stack */
+  .stack { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+  .group h3 { font: 500 12px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
+  .group .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .group .chips span { font: 500 15px/1 var(--sans); padding: 11px 14px; border-radius: 12px; background: var(--card-2); }
+  .group .chips span.key { background: var(--accent-soft); color: var(--accent); }
+
+  /* credentials */
+  .creds { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 14px; }
+  .cred .yr { font: 500 12.5px/1 var(--mono); color: var(--ink-3); }
+  .cred b { display: block; font-size: 22px; font-weight: 800; letter-spacing: -0.02em; margin-top: 26px; line-height: 1.15; }
+  .cred span { display: block; color: var(--ink-2); margin-top: 6px; font-size: 15px; }
+  .cred.feature { background: var(--ink); color: var(--bg); border-color: transparent; }
+  .cred.feature .yr, .cred.feature span { color: color-mix(in srgb, var(--bg) 70%, transparent); }
+
+  /* contact */
+  .contact { margin-top: clamp(72px, 10vw, 128px); text-align: left; }
+  .contact-card { background: var(--card); border: 1px solid var(--line); border-radius: 32px; padding: clamp(28px, 6vw, 72px); display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px; align-items: end; box-shadow: var(--shadow); }
+  .contact h2 { font-size: clamp(40px, 6.6vw, 84px); font-weight: 900; letter-spacing: -0.045em; line-height: .95; }
+  .contact h2 em { font-style: normal; color: var(--accent); }
+  .contact p { color: var(--ink-2); margin-top: 16px; max-width: 30em; }
+  .mail { background: var(--card-2); border-radius: 18px; padding: 18px; display: grid; gap: 12px; min-width: 0; }
+  .mail-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .mail a { font: 500 clamp(15px, 1.8vw, 18px)/1.3 var(--mono); text-decoration: none; overflow-wrap: anywhere; user-select: all; }
+  .mail a:hover { color: var(--accent); }
+  .copy { margin-left: auto; font: 600 14px/1 var(--sans); padding: 11px 16px; border-radius: 999px; border: 0; background: var(--ink); color: var(--bg); cursor: pointer; }
+  .copy:hover { background: var(--accent); color: var(--on-accent); }
+  footer { padding-block: 32px 40px; color: var(--ink-3); font-size: 14px; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+  /* motion */
+  .in { animation: up .7s cubic-bezier(.2,.7,.2,1) both; }
+  .in:nth-child(2) { animation-delay: .06s; } .in:nth-child(3) { animation-delay: .12s; }
+  .in:nth-child(4) { animation-delay: .18s; } .in:nth-child(5) { animation-delay: .24s; }
+  @keyframes up { from { transform: translateY(16px); opacity: .01; } }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .in, .track { animation: none; }
+    .track { flex-wrap: wrap; width: auto; padding-inline: 24px; }
+    .track [aria-hidden="true"] { display: none; }
+    .btn, .t-ai { transition: none; }
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 980px) {
+    .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .t-intro { grid-column: 1 / -1; grid-row: auto; min-height: 0; }
+    .t-years, .t-ai, .t-domains { grid-column: span 1; }
+    .t-stack { grid-column: 1 / -1; }
+    .xp-row { grid-template-columns: 150px 1fr; }
+    .xp-tags { grid-column: 2; justify-content: flex-start; }
+    .tools { grid-template-columns: 1fr; }
+    .loop { grid-template-columns: 1fr 1fr; }
+    .stack, .creds { grid-template-columns: 1fr 1fr; }
+    .creds .cred.feature { grid-column: 1 / -1; }
+    .contact-card { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 620px) {
+    .bento { grid-template-columns: 1fr; }
+    .t-years, .t-ai, .t-domains { grid-column: auto; }
+    .xp-row { grid-template-columns: 1fr; gap: 8px; }
+    .xp-tags { grid-column: auto; margin-top: 8px; }
+    .uses { grid-template-columns: 1fr; }
+    .loop, .stack, .creds { grid-template-columns: 1fr; }
+    .pill-nav a { padding: 10px 11px; font-size: 13.5px; }
+    .pill-nav a.hide-sm { display: none; }
+    .copy { margin-left: 0; }
+    .ai, .contact-card { border-radius: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="navbar">
+  <div class="wrap">
+    <nav class="pill-nav" aria-label="Sections">
+      <a class="logo" href="#top">JG.</a>
+      <a href="#experience">Experience</a>
+      <a href="#ai">AI</a>
+      <a href="#stack">Stack</a>
+      <a class="hide-sm" href="#credentials">Credentials</a>
+      <a class="go" href="#contact">Contact</a>
+    </nav>
+  </div>
+</div>
+
+<main id="top">
+  <!-- ================= BENTO HERO ================= -->
+  <section class="hero">
+    <div class="wrap bento">
+      <div class="tile t-intro in">
+        <span class="status"><i></i>Senior Consultant at Xebia</span>
+        <div>
+          <h1>Jalaj<br>Gupta<em>.</em></h1>
+          <p class="lede">Senior Java engineer building secure, scalable Spring Boot microservices for banking — and shipping faster with AI-assisted development.</p>
+        </div>
+        <div class="actions">
+          <a class="btn solid" href="#contact">Let's talk
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="btn" href="#experience">View experience</a>
+        </div>
+      </div>
+
+      <div class="tile t-years in">
+        <span class="kicker">Experience</span>
+        <div class="big" style="margin-top:14px">9<sup>+</sup></div>
+        <p class="tile-foot">years building production Java systems</p>
+        <div class="years-bar" aria-hidden="true"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span></div>
+        <div class="years-legend"><span>2017</span><span>2026</span></div>
+      </div>
+
+      <a class="tile t-ai in" href="#ai">
+        <span class="arrow" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M6 4h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="kicker">AI-assisted engineering</span>
+        <h2>Copilot &amp; Claude in my daily workflow</h2>
+        <div class="chips"><span>codegen</span><span>refactoring</span><span>debugging</span><span>design</span></div>
+      </a>
+
+      <div class="tile t-stack in">
+        <span class="kicker">Core stack</span>
+        <div class="marquee">
+          <div class="track">
+            <span>Java<b>8 → 21</b></span><span>Spring Boot</span><span>Microservices</span><span>Hibernate / JPA</span><span>REST</span><span>Kafka</span><span>Redis</span><span>JUnit</span>
+            <span aria-hidden="true">Java<b>8 → 21</b></span><span aria-hidden="true">Spring Boot</span><span aria-hidden="true">Microservices</span><span aria-hidden="true">Hibernate / JPA</span><span aria-hidden="true">REST</span><span aria-hidden="true">Kafka</span><span aria-hidden="true">Redis</span><span aria-hidden="true">JUnit</span>
+          </div>
+          <div class="track rev">
+            <span>PostgreSQL</span><span>MySQL</span><span>Oracle<b>OCA</b></span><span>MongoDB</span><span>Gradle</span><span>Maven</span><span>Git</span><span>GitHub Copilot</span><span>Claude</span>
+            <span aria-hidden="true">PostgreSQL</span><span aria-hidden="true">MySQL</span><span aria-hidden="true">Oracle<b>OCA</b></span><span aria-hidden="true">MongoDB</span><span aria-hidden="true">Gradle</span><span aria-hidden="true">Maven</span><span aria-hidden="true">Git</span><span aria-hidden="true">GitHub Copilot</span><span aria-hidden="true">Claude</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tile t-domains in">
+        <span class="kicker">Domains</span>
+        <ul class="domain-list">
+          <li>Banking <small>2022 – now</small></li>
+          <li>Retail <small>2020 – 22</small></li>
+          <li>Automotive <small>2017 – 20</small></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EXPERIENCE ================= -->
+  <section class="sec" id="experience">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><span class="kicker">Career</span><h2 style="margin-top:12px">Experience</h2></div>
+        <p>Nine years across three companies, from batch systems and SQL to owning microservices in banking.</p>
+      </div>
+      <div class="xp">
+        <div class="xp-row">
+          <div class="xp-when">Feb 2022 — Present<br><span class="now">Current</span></div>
+          <div><div class="xp-co">Xebia</div><p class="xp-role">Senior Consultant <span>· Banking</span></p></div>
+          <div class="xp-tags"><span>Java 17</span><span>Spring Boot</span><span>Microservices</span><span>PostgreSQL</span><span>Redis</span></div>
+        </div>
+        <div class="xp-row">
+          <div class="xp-when">Sep 2020 — Feb 2022</div>
+          <div><div class="xp-co">Hughes Systique</div><p class="xp-role">Senior Engineer <span>· Retail</span></p></div>
+          <div class="xp-tags"><span>Spring Boot</span><span>Kafka</span><span>Redis</span><span>MySQL</span></div>
+        </div>
+        <div class="xp-row">
+          <div class="xp-when">Jan 2017 — Mar 2020</div>
+          <div><div class="xp-co">Amiti Software</div><p class="xp-role">Software Developer <span>· Automotive</span></p></div>
+          <div class="xp-tags"><span>Java</span><span>Spring Boot</span><span>Batch</span><span>Oracle SQL</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= AI ================= -->
+  <section class="sec" id="ai">
+    <div class="wrap">
+      <div class="ai">
+        <div class="sec-head">
+          <div><span class="kicker">AI-assisted engineering</span><h2 style="margin-top:12px">Faster with AI.<br><em>Accountable</em> for every line.</h2></div>
+          <p>I use AI tools every day to move faster on code, design and docs — and I review, test and own everything they produce.</p>
+        </div>
+
+        <div class="tools">
+          <article class="tool">
+            <div class="tool-top">
+              <span class="mark c1" aria-hidden="true">GH</span>
+              <div><h3>GitHub Copilot</h3><p class="sub">In the editor, while I write code</p></div>
+            </div>
+            <ul class="uses">
+              <li><b>Code generation</b><span>Boilerplate, DTOs, mappers and tests</span></li>
+              <li><b>Refactoring</b><span>Cleaner structure, fewer repeats</span></li>
+              <li><b>Debugging</b><span>Tracing faults and suggesting fixes</span></li>
+              <li><b>Test scaffolding</b><span>JUnit cases to extend and harden</span></li>
+            </ul>
+          </article>
+          <article class="tool">
+            <div class="tool-top">
+              <span class="mark c2" aria-hidden="true">Cl</span>
+              <div><h3>Claude</h3><p class="sub">For thinking, reviewing and writing</p></div>
+            </div>
+            <ul class="uses">
+              <li><b>Code analysis</b><span>Understanding unfamiliar codebases fast</span></li>
+              <li><b>Architecture</b><span>Talking through designs and trade-offs</span></li>
+              <li><b>Documentation</b><span>API docs, READMEs and design notes</span></li>
+              <li><b>Productivity</b><span>Less busywork, more time on hard problems</span></li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="loop-title"><span class="kicker">How I work with AI</span></div>
+        <div class="loop">
+          <div class="step"><span class="n">01</span><b>Understand</b><p>Use Claude to map the code and weigh design options.</p></div>
+          <div class="step"><span class="n">02</span><b>Draft</b><p>Let Copilot handle the repetitive code while I focus on logic.</p></div>
+          <div class="step"><span class="n">03</span><b>Review</b><p>Read every suggestion critically; nothing merges unread.</p></div>
+          <div class="step"><span class="n">04</span><b>Verify</b><p>Unit tests and code review before anything ships.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= STACK ================= -->
+  <section class="sec" id="stack">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><span class="kicker">Toolbox</span><h2 style="margin-top:12px">Stack</h2></div>
+        <p>Highlighted: the tools I use most.</p>
+      </div>
+      <div class="stack">
+        <div class="tile group">
+          <h3>Backend</h3>
+          <div class="chips"><span class="key">Java 8 → 21</span><span class="key">Spring Boot</span><span class="key">Microservices</span><span>Spring</span><span>Hibernate</span><span>JPA</span><span>REST</span><span>SOAP</span><span>JUnit</span></div>
+        </div>
+        <div class="tile group">
+          <h3>Data &amp; messaging</h3>
+          <div class="chips"><span class="key">PostgreSQL</span><span class="key">Kafka</span><span class="key">Redis</span><span>MySQL</span><span>Oracle</span><span>MongoDB</span></div>
+        </div>
+        <div class="tile group">
+          <h3>Tools &amp; process</h3>
+          <div class="chips"><span class="key">GitHub Copilot</span><span class="key">Claude</span><span>Gradle</span><span>Maven</span><span>Git</span><span>Bitbucket</span><span>IntelliJ</span><span>Postman</span><span>JIRA</span><span>Agile / Scrum</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CREDENTIALS ================= -->
+  <section class="sec" id="credentials">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><span class="kicker">Education</span><h2 style="margin-top:12px">Credentials</h2></div>
+      </div>
+      <div class="creds">
+        <div class="tile cred feature"><span class="yr">2017 · Certification</span><b>Oracle Certified Associate</b><span>Oracle Database SQL</span></div>
+        <div class="tile cred"><span class="yr">2016</span><b>MCA</b><span>Institute of Engineering &amp; Technology, Lucknow</span></div>
+        <div class="tile cred"><span class="yr">2012</span><b>BSc</b><span>Dayanand Vedic Degree College, Orai</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="contact-card">
+        <div>
+          <span class="kicker">Contact</span>
+          <h2 style="margin-top:14px">Let's build<br>something <em>solid.</em></h2>
+          <p>Open to conversations about senior backend and microservices roles.</p>
+        </div>
+        <div class="mail">
+          <span class="kicker">Email</span>
+          <div class="mail-row">
+            <a id="email" href="mailto:jalajgupta97@gmail.com">jalajgupta97@gmail.com</a>
+            <button class="copy" id="copy-email" type="button">Copy</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Jalaj Gupta</span>
+    <span>Java · Spring Boot · Microservices</span>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var btn = document.getElementById('copy-email');
+    var link = document.getElementById('email');
+    btn.addEventListener('click', function () {
+      var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy'; }, 1800); };
+      var fallback = function () {
+        var r = document.createRange(); r.selectNodeContents(link);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        btn.textContent = 'Press Ctrl+C';
+      };
+      try { navigator.clipboard.writeText(link.textContent.trim()).then(done, fallback); }
+      catch (e) { fallback(); }
+    });
+  })();
+</script>
+</body>
+</html>
