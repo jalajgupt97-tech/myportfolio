@@ -2,6 +2,6 @@
 
 Personal portfolio site: senior Java & Spring Boot engineer.
 
-Live at **https://jalajcoolgithub.github.io**
+Live at **https://jalajcoolgithub.github.io/myportfolio/**
 
 A single static `index.html` (no build step), served by GitHub Pages from the `main` branch.
